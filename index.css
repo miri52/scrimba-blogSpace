@@ -1,0 +1,53 @@
+body {
+    font-family: 'Karla', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    background-color: #F5F5DC;
+    padding: 0.5em;
+    position: fixed;
+    width: 100%;
+}
+
+h3  {
+    margin: 0;
+    font-weight: 700;
+}
+
+#blog-list {
+    padding: 1em;
+}
+
+
+/* Form */
+
+.form-container {
+padding: 3em 1em 1em;
+background-color: #ADD8E6;;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+input, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 5em;
+}
+
+button {
+    padding: 1em;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
