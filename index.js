@@ -1,13 +1,13 @@
 const postForm = document.getElementById("post-form")
 const blogList = document.getElementById("blog-list")
 
-let html = ''
 
-fetch("https://apis.scrimba.com/jsonplaceholder/posts")
-    .then(res => res.json())
-    .then(data => {
-        const postsArr = data.slice(0, 5)
-        for (let post of postsArr) {
+let postsArray = [];
+
+
+function renderPosts(){
+    let html = '';
+    for (let post of postsArray) {
             html += `
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>
@@ -15,6 +15,13 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
             `
         }
         blogList.innerHTML = html
+}
+
+fetch("https://apis.scrimba.com/jsonplaceholder/posts")
+    .then(res => res.json())
+    .then(data => {
+        postsArray = data.slice(0, 5)
+        renderPosts()
     })
 
 
@@ -36,18 +43,10 @@ const submitPost = (e) => {
     }
     })
     .then(res => res.json())
-    .then(data => {
-       const {title, body} = data;
-       let newPost = ''
-       newPost += `
-            <h3>${title}</h3>
-            <p>${body}</p>
-            <hr />
-       ` 
-       blogList.insertAdjacentHTML('afterbegin', newPost)    
+    .then(post => {
+        postsArray.unshift(post);
+        renderPosts()
     })
-    
-
 }    
 
 postForm.addEventListener('submit', submitPost)    
